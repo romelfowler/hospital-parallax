@@ -7,9 +7,10 @@
 </head>
 <body>
     <style>
-        body {
-	height: 2000px;
-	background: black;
+        .landscape-parallax-container {
+	height: 100%;
+	background: #FFf;
+    overflow-x: hidden;
 }
 
 .scene {
@@ -18,15 +19,43 @@
 	transform: translateY(var(--translateY));
 	will-change: transform;
 }
+.image-1 {
+    /* transform: translateY(50vh); */
+    bottom:0;
+}
+.image-2 {
+    /* transform: translateY(50vh); */
+    bottom:0;
+    height: 100%;
+    right: -20%;
+}
+.image-3 {
+    /* transform: translateY(50vh); */
+    bottom:0;
+    left: 0;
+}
+.image-4 {
+    /* transform: translateY(50vh); */
+    bottom:0;
+    width: 50%;
+    right: -10px;
+}
+.image-5 {
+    transform: translateY(50vh);
+    bottom:0;
+}
     </style>
 <div class="landscape-parallax-container">
     <div class="landscape-parallax">
-        <img class="scene" data-modifier="30" src="https://s.electerious.com/parallaxscene/p0.png">
-        <img class="scene" data-modifier="18" src="https://s.electerious.com/parallaxscene/p1.png">
-        <img class="scene" data-modifier="12" src="https://s.electerious.com/parallaxscene/p2.png">
-        <img class="scene" data-modifier="8" src="https://s.electerious.com/parallaxscene/p3.png">
-        <img class="scene" data-modifier="6" src="https://s.electerious.com/parallaxscene/p4.png">
-        <img class="scene" data-modifier="0" src="https://s.electerious.com/parallaxscene/p6.png">
+        <!-- <img class="scene" data-modifier="30" src="image/p0.png">
+                 <img class="scene" data-modifier="18" src="image/rectangle.svg"> 
+-->
+        <img class="scene image-1" data-modifier="12" src="image/1.svg">
+        <img class="scene image-2" data-modifier="10" src="image/2.svg">
+        <img class="scene image-3" data-modifier="8" src="image/3.svg">
+        <img class="scene image-4" data-modifier="6" src="image/4.svg" >
+        <img class="scene image-5" src="image/rectangle.svg"> 
+
     </div>
 </div>
 
@@ -43,12 +72,12 @@ document.querySelectorAll(".scene").forEach((elem) => {
 		.create({
 			elem: elem,
 			from: 0,
-			to: 519,
+			to: 500,
 			direct: true,
 			props: {
 				"--translateY": {
-					from: "0",
-					to: `${10 * modifier}px`
+					from: "20vh",
+					to: `${10 * modifier}vh`
 				}
 			}
 		})

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax</title>
+</head>
+<body>
+    <style>
+        body {
+	height: 2000px;
+	background: black;
+}
+
+.scene {
+	position: absolute;
+	width: 100%;
+	transform: translateY(var(--translateY));
+	will-change: transform;
+}
+    </style>
+<div class="landscape-parallax-container">
+    <div class="landscape-parallax">
+        <img class="scene" data-modifier="30" src="https://s.electerious.com/parallaxscene/p0.png">
+        <img class="scene" data-modifier="18" src="https://s.electerious.com/parallaxscene/p1.png">
+        <img class="scene" data-modifier="12" src="https://s.electerious.com/parallaxscene/p2.png">
+        <img class="scene" data-modifier="8" src="https://s.electerious.com/parallaxscene/p3.png">
+        <img class="scene" data-modifier="6" src="https://s.electerious.com/parallaxscene/p4.png">
+        <img class="scene" data-modifier="0" src="https://s.electerious.com/parallaxscene/p6.png">
+    </div>
+</div>
+
+
+<script src="https://s.electerious.com/basicScroll/dist/basicScroll.min.js"></script>
+<script>
+    // More information about this technique/pen:
+// https://medium.com/@electerious/parallax-scrolling-with-js-controlled-css-variables-63cfe96820c7#.o1kkd4cte
+
+document.querySelectorAll(".scene").forEach((elem) => {
+	const modifier = elem.getAttribute("data-modifier");
+
+	basicScroll
+		.create({
+			elem: elem,
+			from: 0,
+			to: 519,
+			direct: true,
+			props: {
+				"--translateY": {
+					from: "0",
+					to: `${10 * modifier}px`
+				}
+			}
+		})
+		.start();
+});
+
+</script>
+</body>
+</html>
